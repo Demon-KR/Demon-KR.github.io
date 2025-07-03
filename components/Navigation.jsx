@@ -36,6 +36,7 @@ export default function Navigation() {
         <ul className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
           <li><a href="#home" onClick={() => scrollToSection('home')}>~/home</a></li>
           <li><a href="#timeline" onClick={() => scrollToSection('timeline')}>~/timeline</a></li>
+          <li><a href="#members" onClick={() => scrollToSection('members')}>~/members</a></li>
           <li><a href="#gallery" onClick={() => scrollToSection('gallery')}>~/gallery</a></li>
           <li><a href="#qa" onClick={() => scrollToSection('qa')}>~/qa</a></li>
         </ul>
