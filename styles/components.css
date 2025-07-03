@@ -1113,7 +1113,7 @@ body.modal-open {
 
   /* Gallery 반응형 */
   .gallery-slider {
-    height: 700px;
+    height: 450px;
   }
 
   .slide-content {
@@ -1262,7 +1262,7 @@ body.modal-open {
 
   /* Gallery 모바일 */
   .gallery-slider {
-    height: 650px;
+    height: 450px;
   }
 
   .gallery-image-container {
