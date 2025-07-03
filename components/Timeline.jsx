@@ -13,7 +13,7 @@ const timelineData = [
     year: '2023',
     title: '-',
     entries: [
-      { date: '2023.01', desc: 'Layer7 사이버보안팀 공식 창립' },
+      { date: '2023.01', desc: 'undefined' },
     ]
   }
 ]

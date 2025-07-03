@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Navigation from '../components/Navigation'
 import Hero from '../components/Hero'
 import Timeline from '../components/Timeline'
+import Members from '../components/Members'
 import Gallery from '../components/Gallery'
 import QA from '../components/QA'
 import Footer from '../components/Footer'
@@ -26,6 +27,7 @@ export default function Home() {
       
       <div className="main-content">
         <Timeline />
+        <Members />
         <Gallery />
         <QA />
       </div>
