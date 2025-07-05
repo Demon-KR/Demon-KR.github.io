@@ -964,6 +964,7 @@
   color: var(--color-white);
   font-size: 1.1rem;
   margin-right: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
 }
 
 .qa-icon {
@@ -987,7 +988,57 @@
 }
 
 .qa-item.active .qa-content {
-  max-height: 500px;
+  max-height: 800px;
+}
+
+.qa-content-inner {
+  padding: 1.5rem;
+}
+
+.qa-content-inner p {
+  color: var(--color-gray);
+  line-height: 1.7;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+.qa-content-inner p:last-child {
+  margin-bottom: 0;
+}
+
+.qa-content-inner ul {
+  color: var(--color-gray);
+  line-height: 1.7;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+}
+
+.qa-content-inner li {
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.qa-content-inner ol li::marker {
+  color: var(--color-green);
+  font-weight: 600;
+}
+
+.qa-content-inner ul li::marker {
+  color: var(--color-green);
+}
+
+.qa-content-inner strong {
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.qa-content-inner em {
+  color: var(--color-cyan);
+  font-style: italic;
 }
 
 .qa-answer {
@@ -1013,8 +1064,14 @@
   color: var(--color-gray);
   text-align: center;
   padding: 2rem 0;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.9rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer p {
+  margin-bottom: 0.5rem;
+  font-weight: 400;
 }
 
 /* ===== body 스크롤 방지 ===== */

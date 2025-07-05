@@ -1,28 +1,29 @@
 import { useState, useCallback } from 'react'
 import Image from 'next/image'
 
-// 간단한 멤버 데이터
 const membersData = [
   {
     id: 'demon',
     name: '정상수 (Sangsoo Jeong)',
     imageUrl: '/images/members/member1.jpg',
     fallbackText: 'SJ',
-    tags: ['Penetration Testing'],
+    tags: ['Security Researcher'],
     links: {
-      github: 'https://github.com/demon',
+      github: 'https://github.com/demon-kr',
+      website: 'https://1993-constant.tistory.com',
       email: 'no-reply@demonteam.com'
     }
   },
   {
     id: 'demon2',
     name: '김민정 (Minjeong Kim)',
-    imageUrl: '/images/members/member1.jpg',
+    imageUrl: '/images/members/rls1004.png',
     fallbackText: 'MK',
-    tags: ['Penetration Testing'],
+    tags: ['Security Researcher'],
     links: {
-      github: 'https://github.com/demon',
-      email: 'no-reply@demonteam.com'
+      github: 'https://github.com/rls1004',
+      website: 'https://rls1004.github.io',
+      email: '98nba@naver.com'
     }
   },
   {
@@ -30,9 +31,9 @@ const membersData = [
     name: '김상빈 (Sangbin Kim)',
     imageUrl: '/images/members/member1.jpg',
     fallbackText: 'SK',
-    tags: ['Penetration Testing'],
+    tags: ['Vulnerability Researcher', 'Virtualization'],
     links: {
-      github: 'https://github.com/demon',
+      github: 'https://github.com/fr0m1s9',
       email: 'no-reply@demonteam.com'
     }
   },
@@ -41,32 +42,35 @@ const membersData = [
     name: '김종민 (Jongmin Kim)',
     imageUrl: '/images/members/member1.jpg',
     fallbackText: 'JK',
-    tags: ['Penetration Testing'],
+    tags: ['Security Researcher', 'CTF Player', '@Super-Guesser', '@CyKor'],
     links: {
-      github: 'https://github.com/demon',
+      github: 'https://github.com/demon-kr',
+      website: 'https://slyfizz.notion.site/slyfizz-s-rev-for-fun-01a89e24864744b486e16521b53949d9',
       email: 'no-reply@demonteam.com'
     }
   },
   {
     id: 'demon5',
     name: '김주원 (Joowon Kim)',
-    imageUrl: '/images/members/member1.jpg',
+    imageUrl: '/images/members/arrester.png',
     fallbackText: 'JK',
-    tags: ['Penetration Testing'],
+    tags: ['Security Researcher', 'CTF Player', '@ENKI'],
     links: {
-      github: 'https://github.com/demon',
+      github: 'https://github.com/arrester',
+      website: 'https://blog.naver.com/lstarrlodyl',
       email: 'no-reply@demonteam.com'
     }
   },
   {
     id: 'demon6',
     name: '김준태 (Juntae Kim)',
-    imageUrl: '/images/members/member1.jpg',
+    imageUrl: '/images/members/hellojuntae.jpg',
     fallbackText: 'JK',
-    tags: ['Penetration Testing'],
+    tags: ['Security Researcher'],
     links: {
-      github: 'https://github.com/demon',
-      email: 'no-reply@demonteam.com'
+      github: 'https://github.com/demon-kr',
+      website: 'https://sunrinjuntae.tistory.com',
+      email: 'hellojuntae@kaist.ac.kr'
     }
   },
   {
@@ -74,86 +78,113 @@ const membersData = [
     name: '박기태 (Kitae Park)',
     imageUrl: '/images/members/member1.jpg',
     fallbackText: 'KP',
-    tags: ['Penetration Testing'],
+    tags: ['Security Researcher'],
     links: {
-      github: 'https://github.com/demon',
+      github: 'https://github.com/demon-kr',
       email: 'no-reply@demonteam.com'
     }
   },
   {
     id: 'demon8',
-    name: '윤석찬 (Seokchan Yoon)',
+    name: '손현지 (Hyunji Son)',
     imageUrl: '/images/members/member1.jpg',
-    fallbackText: 'SY',
-    tags: ['Penetration Testing'],
+    fallbackText: 'HS',
+    tags: ['Security Researcher'],
     links: {
-      github: 'https://github.com/demon',
-      email: 'no-reply@demonteam.com'
+      github: 'https://github.com/demon-kr',
+      website: 'https://jiravvit.github.io',
+      email: 'hjson012@gmail.com'
     }
   },
   {
     id: 'demon9',
-    name: '이도원 (Dowon Lee)',
-    imageUrl: '/images/members/member1.jpg',
-    fallbackText: 'DW',
-    tags: ['Penetration Testing'],
+    name: '윤석찬 (Seokchan Yoon)',
+    imageUrl: '/images/members/ch4n3.jpg',
+    fallbackText: 'SY',
+    tags: ['Security Researcher', 'CTF Player'],
     links: {
-      github: 'https://github.com/demon',
-      email: 'no-reply@demonteam.com'
+      github: 'https://github.com/ch4n3-yoon',
+      email: 'ch4n3.yoon@gmail.com'
     }
   },
   {
     id: 'demon10',
-    name: '이성권 (Sungkwon Lee)',
+    name: '이도원 (Dowon Lee)',
     imageUrl: '/images/members/member1.jpg',
-    fallbackText: 'SK',
-    tags: ['Penetration Testing'],
+    fallbackText: 'DL',
+    tags: ['Security Researcher', '@ROKA'],
     links: {
-      github: 'https://github.com/demon',
-      email: 'no-reply@demonteam.com'
+      github: 'https://github.com/demon-kr',
+      website: 'https://blog.naver.com/ksil_',
+      email: 'ldw0811@gmail.com'
     }
   },
   {
     id: 'demon11',
-    name: '이세형 (Sahyung Lee)',
+    name: '이성권 (Sungkwon Lee)',
     imageUrl: '/images/members/member1.jpg',
-    fallbackText: 'SH',
-    tags: ['Penetration Testing'],
+    fallbackText: 'SL',
+    tags: ['Security Researcher'],
     links: {
-      github: 'https://github.com/demon',
-      email: 'no-reply@demonteam.com'
+      github: 'https://github.com/demon-kr',
+      website: 'https://reckon4.com',
+      email: 'sooips147@gmail.com'
     }
   },
   {
     id: 'demon12',
-    name: '정동현 (Donghyeon Jeong)',
-    imageUrl: '/images/members/member1.jpg',
-    fallbackText: 'DJ',
-    tags: ['Penetration Testing'],
+    name: '이세형 (Sahyung Lee)',
+    imageUrl: '/images/members/hackintoanetwork.jpg',
+    fallbackText: 'SL',
+    tags: ['Security Researcher'],
     links: {
-      github: 'https://github.com/dhje0ng',
-      email: 'dhje0ng@naver.com'
+      github: 'https://github.com/hackintoanetwork',
+      email: 'hackintoanetwork@proton.me'
     }
   },
   {
     id: 'demon13',
-    name: '채하늘 (Haneul Chae)',
-    imageUrl: '/images/members/member1.jpg',
-    fallbackText: 'HC',
-    tags: ['Penetration Testing'],
+    name: '정동현 (Donghyeon Jeong)',
+    imageUrl: '/images/members/dhjeong.png',
+    fallbackText: 'DJ',
+    tags: ['Security Researcher', 'Automotive'],
     links: {
-      github: 'https://github.com/demon',
-      email: 'no-reply@demonteam.com'
+      github: 'https://github.com/dhje0ng',
+      website: 'https://dhjeong.kr',
+      email: 'dhjeongkr@gmail.com'
     }
   },
   {
     id: 'demon14',
+    name: '채하늘 (Haneul Chae)',
+    imageUrl: '/images/members/g0riya.jpg',
+    fallbackText: 'HC',
+    tags: ['Security Researcher', 'CTF Player', '@Super-Guesser'],
+    links: {
+      github: 'https://github.com/G0RiyA',
+      email: 'no-reply@demonteam.com'
+    }
+  },
+  {
+    id: 'demon15',
     name: '최동민 (Dongmin Choi)',
     imageUrl: '/images/members/member1.jpg',
-    fallbackText: 'HC',
-    tags: ['Penetration Testing'],
+    fallbackText: 'DC',
+    tags: ['Security Researcher'],
     links: {
-      github: 'https://github.com/demon',
+      github: 'https://github.com/demon-kr',
+      email: 'no-reply@demonteam.com'
+    }
+  },
+  {
+    id: 'demon16',
+    name: '황수민 (Sumin Hwang)',
+    imageUrl: '/images/members/member1.jpg',
+    fallbackText: 'SH',
+    tags: ['Security Researcher'],
+    links: {
+      github: 'https://github.com/demon-kr',
+      website: 'https://katolik-xixon.tistory.com',
       email: 'no-reply@demonteam.com'
     }
   },
