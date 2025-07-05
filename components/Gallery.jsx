@@ -1,12 +1,18 @@
 import { useState, useEffect, useCallback  } from 'react'
 import Image from 'next/image'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from "remark-gfm";
 
 const galleryData = [
   {
     id: '20252',
     title: '데몬팀 MT',
     subtitle: 'GAPYEONG, South Korea',
-    description: '데몬팀 MT 현장 (경기도 가평)',
+    description: `
+    데몬팀은 3월 경기도 가평으로 MT 를 다녀왔습니다 😊
+    비록 모든 멤버가 참여하진 못했지만 1박 2일동안
+    새로운 팀원들과도 친해질 수 있는 시간이였어요 😍
+    `,
     imageUrl: '/images/gallery/2025/2025_demon_mt.jpg',
     fallbackText: 'hcamp-30'
   },
@@ -14,11 +20,19 @@ const galleryData = [
     id: '20251',
     title: '제 30회 해킹캠프 동계',
     subtitle: 'Seoul, South Korea',
-    description: '2025년 02월 제 30회 해킹캠프 동계 (예시 설명)',
+    description: `
+    제 30회 해킹캠프 겨울 시즌이 무사히 잘 끝났습니다 😊
+    데몬팀에서는 매년 해킹캠프 CTF 대회를 운영하고 있어요 ✌
+    내년에 진행 될 해킹캠프 여름 시즌을 기대해주세요 👀👀
+    `,
     imageUrl: '/images/gallery/2025/2025_hcamp_30.jpg',
     fallbackText: 'hcamp-30'
   },
 ]
+
+function FormattedDescription({ desc }) {
+  return <ReactMarkdown remarkPlugins={remarkGfm}>{desc}</ReactMarkdown>
+}
 
 export default function Gallery() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -76,20 +90,17 @@ export default function Gallery() {
     })
   }, [])
 
-  // 모달 닫기 함수
   const closeModal = useCallback(() => {
     console.log('Closing modal')
     setIsModalOpen(false)
     setModalImage(null)
     
-    // body 스크롤 복원
     if (typeof document !== 'undefined') {
       document.body.classList.remove('modal-open')
       document.body.style.overflow = ''
     }
   }, [])
 
-  // 모달에서 이미지 변경
   const changeModalImage = useCallback(async (direction) => {
     if (!modalImage) return
     
@@ -101,8 +112,7 @@ export default function Gallery() {
     
     const newImage = galleryData[newIndex]
     console.log('Changing modal image to:', newImage.title)
-    
-    // 이미지 미리 불러오기
+
     try {
       await preloadImage(newImage.imageUrl, newImage.title)
     } catch (error) {
@@ -112,18 +122,14 @@ export default function Gallery() {
     setModalImage(newImage)
   }, [modalImage, totalSlides, preloadImage])
 
-  // 이미지 클릭 핸들러
   const handleImageClick = useCallback(async (item, event) => {
     event.preventDefault()
     event.stopPropagation()
     
     console.log('Image clicked:', item.id, 'Error status:', imageErrors[item.id])
-    
-    // 이미지 에러가 없을 때만 모달 열기
     if (!imageErrors[item.id]) {
       console.log('Opening modal for:', item.title)
       
-      // 모달 이미지 프리로드
       try {
         await preloadImage(item.imageUrl, item.title)
       } catch (error) {
@@ -140,7 +146,6 @@ export default function Gallery() {
     }
   }, [imageErrors, preloadImage])
 
-  // 키보드 이벤트 핸들링
   useEffect(() => {
     const handleKeyDown = (e) => {
       console.log('Key pressed:', e.key, 'Modal open:', isModalOpen)
@@ -301,7 +306,7 @@ export default function Gallery() {
                     <div className="gallery-info">
                       <h3 className="gallery-title">{item.title}</h3>
                       <p className="gallery-subtitle">{item.subtitle}</p>
-                      <p className="gallery-description">{item.description}</p>
+                      <FormattedDescription desc={item.description} />
                     </div>
                   </div>
                 </div>
