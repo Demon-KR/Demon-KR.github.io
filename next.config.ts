@@ -1,11 +1,3 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  images: {
-    unoptimized: true
-  },
-  basePath: process.env.NODE_ENV === 'production' ? '/Demon-KR.github.io' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/Demon-KR.github.io' : '',
-};
-
-export default nextConfig;
+import type { NextConfig } from 'next';
+const config: NextConfig = { output: 'export', images: { unoptimized: true }, trailingSlash: true };
+export default config;
